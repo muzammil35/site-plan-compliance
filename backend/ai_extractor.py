@@ -43,10 +43,10 @@ def extract_site_data(pdf_bytes: bytes) -> dict:
     Raises on API error; returns partial data if some fields are null.
     """
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=types.Content(parts=[
             types.Part.from_bytes(data=pdf_bytes, mime_type="application/pdf"),
-            types.Part.from_text(EXTRACTION_PROMPT),
+            types.Part.from_text(text=EXTRACTION_PROMPT),
         ]),
     )
 
